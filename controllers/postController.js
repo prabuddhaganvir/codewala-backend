@@ -2,15 +2,19 @@ import Post from "../model/post.model.js";
 import mongoose from "mongoose";
 
 export async function getAllPosts(req, res) {
-      try {
-        const posts = await Post.find()
-        .populate('author', 'name')
-        .sort({ createdAt: -1 });
-        res.status(200).json({ success: true, posts });
-      } catch (error) {
-        console.error("Error fetching posts:", error);
-        res.status(500).json({ success: false, message: "Internal server error" });
-      }
+     try {
+    console.log("⚙️ [getAllPosts] - Fetching posts...");
+    const posts = await Post.find()
+      .populate("author", "name")
+      .sort({ createdAt: -1 });
+    console.log("⚙️ [getAllPosts] - Posts fetched:", posts);
+    res.status(200).json({ success: true, posts });
+  } catch (error) {
+    console.error("⚠️ [getAllPosts] Error:", error.message);
+    console.error(error.stack);
+    res.status(500).json({ success: false, message: "Internal server error" });
+  }
+
 }
 export async function createPost(req, res) {
     try {
