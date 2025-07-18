@@ -26,7 +26,7 @@ app.use(cors({
 app.use('/api',authRoutes)
 app.use('/api/posts',postRoutes);
 
-app.get("https://codewala-frontend.vercel.app/api/me", protectRoute, (req, res) => {
+app.get("/api/me", protectRoute, (req, res) => {
   res.status(200).json({ user: req.user });
 });
 
