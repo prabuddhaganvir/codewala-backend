@@ -18,10 +18,10 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin:"http://localhost:5173",
-    credentials: true, // Allow cookies to be sent with requests
+  origin: "https://codewala-frontend.vercel.app/",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
 }));
-
 
 app.use('/api',authRoutes)
 app.use('/api/posts',postRoutes);
