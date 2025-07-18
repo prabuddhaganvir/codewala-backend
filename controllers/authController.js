@@ -35,8 +35,8 @@ export async function Signup(req, res) {
   });
   res.cookie("jwt", token, {
     httpOnly: true,
-    sameSite: "strict", // prevent form CSRF attacks
-    secure: process.env.NODE_ENV === "production",
+                secure: true,           // ✅ Cookie only via HTTPS
+  sameSite: "none",       // ✅ Cross-origin allowed
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
   res.status(201).json({ success: true, user: newUser });
@@ -72,8 +72,8 @@ export async function Login(req, res) {
              res.cookie("jwt", token, {
                maxAge: 7 * 24 * 60 * 60 * 1000,
                httpOnly: true, //prevent from XSS attack
-               sameSite: "strict", // prevent form CSRF attacks
-               secure: process.env.NODE_ENV === "production", // set to true in production
+               secure: true,           // ✅ Cookie only via HTTPS
+  sameSite: "none",       // ✅ Cross-origin allowed
              });
              res.status(200).json(
               {success:true, message:"Login Successfully",
