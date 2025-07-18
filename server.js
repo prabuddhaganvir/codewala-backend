@@ -18,7 +18,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-  origin: "https://codewala-frontend.vercel.app/",
+  origin: "https://codewala-frontend.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
@@ -26,7 +26,7 @@ app.use(cors({
 app.use('/api',authRoutes)
 app.use('/api/posts',postRoutes);
 
-app.get("/api/me", protectRoute, (req, res) => {
+app.get("https://codewala-frontend.vercel.app", protectRoute, (req, res) => {
   res.status(200).json({ user: req.user });
 });
 
