@@ -8,7 +8,7 @@ export async function getAllPosts(req, res) {
         .sort({ createdAt: -1 });
         res.status(200).json({ success: true, posts });
       } catch (error) {
-        config.error("Error fetching posts:", error);
+        console.error("Error fetching posts:", error);
         res.status(500).json({ success: false, message: "Internal server error" });
       }
 }
