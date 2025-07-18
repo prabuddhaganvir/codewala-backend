@@ -32,8 +32,10 @@ app.get("/api/me", protectRoute, (req, res) => {
 
 
 
-
-app.listen(PORT,()=>{
-    console.log(`Server is running on ${PORT}`);
-    connectDB()
-})
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`✅ Server is running on port ${PORT}`);
+  });
+}).catch(err => {
+  console.error("❌ Failed to connect to MongoDB:", err.message);
+});
