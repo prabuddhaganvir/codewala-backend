@@ -35,7 +35,7 @@ export async function Signup(req, res) {
   });
   res.cookie("jwt", token, {
     httpOnly: true,
-                secure: true,           // ✅ Cookie only via HTTPS
+    secure: true,           // ✅ Cookie only via HTTPS
   sameSite: "none",       // ✅ Cross-origin allowed
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
@@ -73,7 +73,7 @@ export async function Login(req, res) {
                maxAge: 7 * 24 * 60 * 60 * 1000,
                httpOnly: true, //prevent from XSS attack
                secure: true,           // ✅ Cookie only via HTTPS
-  sameSite: "none",       // ✅ Cross-origin allowed
+              sameSite: "none",       // ✅ Cross-origin allowed
              });
              res.status(200).json(
               {success:true, message:"Login Successfully",
