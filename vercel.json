@@ -18,10 +18,8 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/index.htm"
     }
-  ] ,
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
-  ]
+  ] 
+
 }

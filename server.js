@@ -6,6 +6,7 @@ import { connectDB } from './lib/db.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import protectRoute from './middleware/protected.js';
+import geminiRoutes from './routes/gemini.js'
 
 
 
@@ -25,6 +26,10 @@ app.use(cors({
 
 app.use('/api',authRoutes)
 app.use('/api/posts',postRoutes);
+app.use('/api/gemini', geminiRoutes);
+
+
+
 
 app.get("/api/me", protectRoute, (req, res) => {
   res.status(200).json({ user: req.user });
